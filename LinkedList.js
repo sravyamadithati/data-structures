@@ -50,16 +50,39 @@ class LinkedList {
         newNode.next=temp;
     }
     
+    removeAt(index){
+        let node=this.head;
+        let pre;
+        if(index===0){
+            this.head=null;
+            return;
+        }
+        while(--index){
+            if(node.next!=null){
+                pre=node;
+                node=node.next;
+            }
+        }
+        pre.next=node.next;
+    }
+    
     printList(){
         let node=this.head;
         while(node){
             console.log(node.data+'->');
             node=node.next;
         }
+        console.log('----');
     }
 }
 let list=new LinkedList();
 list.appendNode(new Node(1));
-
-list.insertAt(2,new Node(15));
+list.appendNode(new Node(2));
+list.appendNode(new Node(4));
+list.appendNode(new Node(5));
+list.insertAt(2,new Node(3));
 list.printList();
+list.removeAt(3);
+list.printList();
+
+
