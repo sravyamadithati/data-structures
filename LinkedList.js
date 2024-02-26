@@ -66,6 +66,17 @@ class LinkedList {
         pre.next=node.next;
     }
     
+    reverse(){
+        let prevNode=null,nextNode,currNode=this.head;
+        while(currNode){
+            nextNode=currNode.next;
+            currNode.next=prevNode;
+            prevNode=currNode;
+            currNode=nextNode;
+        }
+        this.head=prevNode;
+    }
+    
     printList(){
         let node=this.head;
         while(node){
@@ -84,5 +95,7 @@ list.insertAt(2,new Node(3));
 list.printList();
 list.removeAt(3);
 list.printList();
+list.reverse();
+list.printList()
 
 
