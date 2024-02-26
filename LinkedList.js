@@ -20,7 +20,7 @@ class LinkedList {
         }
         node.next=newNode;
     }
-    appendAtBegining(newNode){
+    insertAtBegining(newNode){
         let node=this.head;
         if(node===null){
             this.head=newNode;
@@ -30,6 +30,26 @@ class LinkedList {
             this.head=newNode;
         }
     }
+    insertAt(position,newNode){
+        let node=this.head;
+        if(position===0){
+            newNode.next=node;
+            this.head=newNode;
+            return;
+        }
+        while(--position){
+            if(node.next!=null){
+                node=node.next;
+            }
+            else{
+                throw Error("Index Out of Bound");
+            }
+        }
+        let temp=node.next;
+        node.next=newNode;
+        newNode.next=temp;
+    }
+    
     printList(){
         let node=this.head;
         while(node){
@@ -40,6 +60,6 @@ class LinkedList {
 }
 let list=new LinkedList();
 list.appendNode(new Node(1));
-list.appendNode(new Node(2));
-list.appendNode(new Node(5));
+
+list.insertAt(2,new Node(15));
 list.printList();
