@@ -20,6 +20,16 @@ class LinkedList {
         }
         node.next=newNode;
     }
+    appendAtBegining(newNode){
+        let node=this.head;
+        if(node===null){
+            this.head=newNode;
+        }
+        else{
+            newNode.next=this.head;
+            this.head=newNode;
+        }
+    }
     printList(){
         let node=this.head;
         while(node){
